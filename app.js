@@ -1,6 +1,8 @@
 const morgan = require('morgan')
 const express =require('express')
 const bodyParser = require('body-parser')
+const views = require('./views/index')
+const layout = require('./views/layout')
 
 const app = express();
 const staticMiddleware = express.static(__dirname + '/public')
@@ -10,7 +12,7 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(staticMiddleware)
 
 app.get('/', function(req,res,next){
-  res.send('Hello World')
+  res.send(layout(views.main))
 })
 
 const port = 1337;
