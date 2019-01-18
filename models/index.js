@@ -1,4 +1,8 @@
 const Sequelize = require('sequelize');
+function slugGenerator (title) {
+  return title.replace(/\s+/g, '_').replace(/\W/g, '');
+}
+
 const db = new Sequelize('postgres://localhost:5432/wikistack', {
   logging: false,
 });
@@ -21,6 +25,11 @@ const Page = db.define('page', {
     defaultValue: 'open',
   },
 });
+
+Page.beforeValidate('page', function (page, optionsObject) {
+  page.Slug = slugGenerator(page.Title)
+  return Sequelize.Promise.resolve(page)
+})
 
 const User = db.define('user', {
   Name: {
