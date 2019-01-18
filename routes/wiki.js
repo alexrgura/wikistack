@@ -21,7 +21,10 @@ router.get('/:slug', async function(req, res, next) {
     const currentPage = await models.Page.findOne({
       where: { Slug: req.params.slug },
     });
-    res.send(layout(views.wikiPage(currentPage)));
+    const user = await models.User.findOne({
+      where: { id: currentPage.authorId }
+    })
+    res.send(layout(views.wikiPage(currentPage, user.Name)));
   } catch (error) {
     next(error);
   }
