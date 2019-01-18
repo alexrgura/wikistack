@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,7 +13,11 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "html-template-tag": "^2.0.0",
     "morgan": "^1.9.1",
     "volleyball": "^1.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
   }
 }
