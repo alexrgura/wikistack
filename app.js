@@ -19,7 +19,7 @@ app.get('/', function(req, res, next) {
 });
 
 app.use('/wiki', wiki)
-app.use('/user', user)
+app.use('/users', user)
 
 models.db.authenticate().then(() => {
   console.log('connected to the database');
